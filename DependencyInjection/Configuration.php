@@ -29,7 +29,6 @@ class Configuration implements ConfigurationInterface
     {
         $treeBuilder = new TreeBuilder();
         $rootNode = $treeBuilder->root('mopa_bootstrap');
-        $this->addVersionConfig($rootNode);
         $this->addFormConfig($rootNode);
         $this->addNavbarConfig($rootNode);
         $this->addInitializrConfig($rootNode);
@@ -37,15 +36,6 @@ class Configuration implements ConfigurationInterface
         return $treeBuilder;
     }
 
-    protected function addVersionConfig(ArrayNodeDefinition $rootNode)
-    {
-        $rootNode
-            ->children()
-                ->scalarNode('version')
-                    ->defaultValue(null)
-                    ->cannotBeEmpty()
-            ->end();
-    }
     protected function addFormConfig(ArrayNodeDefinition $rootNode)
     {
         $rootNode
@@ -56,18 +46,9 @@ class Configuration implements ConfigurationInterface
                         ->scalarNode('templating')
                             ->defaultValue("MopaBootstrapBundle:Form:fields.html.twig")
                             ->end()
-                        ->scalarNode('horizontal_label_class')
-                            ->defaultValue("col-lg-3")
-                            ->end()
-                        ->scalarNode('horizontal_input_wrapper_class')
-                            ->defaultValue("col-lg-9")
-                            ->end()
                         ->booleanNode('render_fieldset')
                             ->defaultValue(true)
                             ->end()
-                        ->booleanNode('render_collection_item')
-                            ->defaultValue(true)
-                        ->end()
                         ->booleanNode('show_legend')
                             ->defaultValue(true)
                             ->end()
@@ -79,6 +60,9 @@ class Configuration implements ConfigurationInterface
                             ->end()
                         ->booleanNode('render_optional_text')
                             ->defaultValue(true)
+                            ->end()
+                        ->booleanNode('errors_on_forms')
+                            ->defaultValue(false)
                             ->end()
                         ->booleanNode('render_required_asterisk')
                             ->defaultValue(false)
@@ -95,14 +79,6 @@ class Configuration implements ConfigurationInterface
                                 ->scalarNode('placement')
                                     ->defaultValue('top')
                                 ->end()
-                            ->end()
-                        ->end()
-                        ->arrayNode('tabs')
-                            ->addDefaultsIfNotSet()
-                            ->children()
-                                ->scalarNode('class')
-                                    ->defaultValue('nav nav-tabs')
-                                    ->end()
                             ->end()
                         ->end()
                         ->arrayNode('popover')
@@ -169,7 +145,6 @@ class Configuration implements ConfigurationInterface
         $rootNode
             ->children()
                 ->arrayNode('navbar')
-                    ->canBeEnabled()
                     ->addDefaultsIfNotSet()
                     ->children()
                         ->scalarNode('template')

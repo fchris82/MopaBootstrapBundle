@@ -15,12 +15,11 @@ MopaBootstrapBundle provides several features to assist you quickly building app
 
 Additional doc:
 
-- [Configuration Reference](configuration-reference.md)
 - [Including bootstrap](including-bootstrap.md)
 - [Css vs less](css-vs-less.md)
 - [Using Sass as preprocessor](sass-configuration.md)
 - [Assetic configuration](assetic-configuration.md)
-- [Upgrading to new navbars](navbar-upgrade.md)
+- [Advanced Navbar Example](navbar-configuration-advanced.md)
 - [Support for other Bundles](99-support-for-other-bundles.md)
 
 ### Further documentation:

@@ -21,14 +21,13 @@
     },
     "target-dir": "Mopa/Bundle/BootstrapBundle",
     "require": {
-        "symfony/symfony": ">=2.1,<2.4-dev",
-        "mopa/composer-bridge": "1.3.*"
+        "symfony/symfony": ">=2.1,<2.3-dev",
+        "mopa/composer-bridge": "1.*"
     },
     "suggest":  {
         "twbs/bootstrap": "2.*",
         "knplabs/knp-paginator-bundle": "dev-master",
         "knplabs/knp-menu-bundle": "2.0.*",
-        "mopa/bootstrap-sandbox-bundle": "~2.2",
         "craue/formflow-bundle": "dev-master",
         "jlong/sass-twitter-bootstrap": "dev-master"
     },

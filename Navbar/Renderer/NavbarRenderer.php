@@ -1,7 +1,6 @@
 <?php
 namespace Mopa\Bundle\BootstrapBundle\Navbar\Renderer;
 
-use Symfony\Component\DependencyInjection\ContainerAwareInterface;
 use Symfony\Component\DependencyInjection\ContainerInterface;
 use Mopa\Bundle\BootstrapBundle\Navbar\NavbarInterface;
 use Mopa\Bundle\BootstrapBundle\Navbar\NavbarFormInterface;
@@ -47,7 +46,7 @@ class NavbarRenderer
 
         // we do not call renderBlock here to avoid too many nested level calls (XDebug limits the level to 100 by default)
         ob_start();
-        $template->displayBlock($block,  array_merge($template->getEnvironment()->getGlobals() ,array('navbar' => $navbar, 'options' => $options)));
+        $template->displayBlock($block, array_merge($template->getEnvironment()->getGlobals() ,array('navbar' => $navbar, 'options' => $options)));
         $html = ob_get_clean();
 
         return $html;
@@ -58,9 +57,6 @@ class NavbarRenderer
             $formType = null;
             if (is_string($formTypeString) && strlen($formTypeString) > 0) {
                 $formType = new $formTypeString();
-                if ($formType instanceof ContainerAwareInterface) {
-                    $formType->setContainer($this->container);
-                }
             }
             if ($formType && $formType instanceof NavbarFormInterface) {
                 $navbar->setFormType($key, $formType);
