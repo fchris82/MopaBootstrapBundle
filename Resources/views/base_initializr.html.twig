@@ -29,7 +29,7 @@
        X-UA-Compatible meta element, which will prompt them to switch to Desktop Mode.
        http://html5boilerplate.com/docs/html-head/#prompt-users-to-switch-to-desktop-mode-in-ie10-metro
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1,requiresActiveX=true"> #}
-    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <!--[if IE]><meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" /><![endif]-->
 
     {# WARNING: do not add "initial-scale=1" to viewport, breaks iOS view!
        https://github.com/h5bp/html5-boilerplate/issues/824 #}
@@ -163,18 +163,18 @@
 
     {# removed jQuery from assetic load as it is loaded from Google CDN above #}
     {% javascripts
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-transition.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-modal.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-dropdown.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-scrollspy.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-tab.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-tooltip.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-popover.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-alert.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-button.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-collapse.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-carousel.js'
-        '@MopaBootstrapBundle/Resources/twbs/js/bootstrap-typeahead.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-transition.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-modal.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-dropdown.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-scrollspy.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tab.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-tooltip.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-popover.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-alert.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-button.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-collapse.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-carousel.js'
+        '@MopaBootstrapBundle/Resources/bootstrap/js/bootstrap-typeahead.js'
         '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-collection.js'
         '@MopaBootstrapBundle/Resources/public/js/mopabootstrap-subnav.js'
         '@MopaBootstrapBundle/Resources/public/js/html5bp_plugins.js'

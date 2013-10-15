@@ -24,6 +24,7 @@ mopa_bootstrap:
     form:
         templating: false # default is true
         render_fieldset: true # default is true
+        render_collection_item: true # default is true
         show_legend: true # default is true
         show_child_legend: false # default is false
         render_required_asterisk: true # default is true
@@ -151,26 +152,6 @@ Widget Addons
 
 To get the addons working, i had to increase max nesting level of xdebug to 200.
 
-### Widget addons Append / Prepend
-
-You can integrate Twitter Bootstrap's form addons, you have the choice between `icon` or `text` options:
-
-```php
-public function buildForm(FormBuilder $builder, array $options)
-{
-    $builder
-        ->add('price', null, array(
-            "widget_addon_append" => array(
-                "icon"     => "home",
-            ),
-            "widget_addon_prepend" => array(
-                "text"     => "My text",
-            )
-        ))
-    ;
-    //...
-```
-
 ### Form Field Prefix / Suffix
 
 There are also suffix and prefix attributes for the widgets:
@@ -269,6 +250,32 @@ will result in
     ...
 ```
 
+Buttons
+-------
+
+It's possible to add icon tags to buttons which are generated via the form component.
+This works for the field types 'button' as well as 'submit' and 'reset'.
+In order to do this, use the properties icon and icon_color:
+
+``` php
+$builder
+    ->add(
+        'save',
+        'submit',
+        [
+            'icon'       => 'save',
+            'icon_color' => '#FF00FF'
+        ]
+    );
+```
+
+results in:
+
+``` html
+<button class="btn" ... type="submit">
+    <i class="icon-save" style="color: #FF00FF;"></i> Save
+</button>
+```
 
 Collections
 -----------

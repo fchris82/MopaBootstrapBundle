@@ -31,9 +31,9 @@ abstract class BaseBootstrapSymlinkCommand extends ContainerAwareCommand
             ->addOption('no-symlink', null, InputOption::VALUE_NONE, 'Use hard copy/mirroring instead of symlink. This is required for Windows without administrator privileges.')
         ;
     }
-    
+
     abstract protected function getTwitterBootstrapName();
-    
+
     protected function execute(InputInterface $input, OutputInterface $output)
     {
         $this->input = $input;
@@ -57,7 +57,8 @@ abstract class BaseBootstrapSymlinkCommand extends ContainerAwareCommand
             return;
         }
 
-        if ($input->getOption('no-symlink')) {
+        // Automatically detect if on Win XP where symlink will allways fail
+        if ($input->getOption('no-symlink') or PHP_OS=="WINNT")  {
             $this->output->write("Checking destination");
 
             if (true === self::checkSymlink($symlinkTarget, $symlinkName)) {
@@ -169,7 +170,7 @@ EOF
         } elseif (is_link($symlinkName)) {
             $linkTarget = readlink($symlinkName);
             if ($linkTarget != $symlinkTarget) {
-                if ($forceSymlink) {
+                if (!$forceSymlink) {
                     throw new \Exception("Symlink " . $symlinkName .
                         " Points  to " . $linkTarget .
                         " instead of " . $symlinkTarget);
